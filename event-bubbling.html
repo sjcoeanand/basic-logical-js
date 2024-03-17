@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent1{ background-color: #00ffff; padding: 10px;}
+        .child1{ background-color: #b6c027; padding: 10px;}
+        .subchild1{ background-color: #ff7300; padding: 10px;}
+        .subchild2{ background-color: #082525; padding: 10px; color: #fff;}
+    </style>
+</head>
+<body>
+    <h2>========================Event Bubbling===============</h2>
+    <div class="parent1" onclick="mypalert()">
+        parent1
+        <div class="child1" onclick="mypc1alert()">
+            pchild1
+            <div class="subchild1" >
+                <a href="anandshendage.in" onclick="myc1alert(event)">child1 - using event.stopPropagation()</a> 
+            </div>
+            <div class="subchild2" onclick="myc2alert()">
+                child2 - bubbling effect
+            </div>
+        </div>
+    </div>
+
+    <h2>=============================Event Deligation=========================</h2>
+    <div onclick="alert(event.type + '!')">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+    </div>
+
+    
+    <h2>===================================Event Capturing==============================</h2>
+    <div class="parentEventCapture" style="padding: 20px; background-color: chartreuse;">
+        <button class="child">click me</button>
+      </div>
+
+    <script>
+       function mypalert(){alert('parent1 called')}
+       function mypc1alert(){alert('phild1 called')}
+       function myc1alert(event){
+        console.log("e", event);
+        event.preventDefault()
+        event.stopPropagation()
+        alert('child1 called')
+       }
+       function myc2alert(){alert('child2 called')}
+
+       const parent = document.querySelector(".parentEventCapture");
+      const child = document.querySelector(".child");
+
+      parent.addEventListener( "click", function () {
+          console.log("clicked parent");
+        },
+        true
+      );
+
+      child.addEventListener("click", function () {
+        event.stopPropagation();
+        console.log("clicked child");
+      });
+    </script>
+</body>
+</html>
