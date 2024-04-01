@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-wrapper{  position: relative; overflow: hidden; }
+         ul{  padding-left: 0px; display: flex; width: 100%; overflow: auto;overflow: scroll; 
+  scroll-behavior: smooth;}
+  li{
+    list-style: none;
+  }
+        .slide{  height: 200px;  width: 100%; flex: 1 0 100%; }
+        .slide:nth-child(1){ background-color: aquamarine; }
+        .slide:nth-child(2){ background-color: greenyellow; }
+        .slide:nth-child(3){ background-color: skyblue; }
+        .slide:nth-child(4){ background-color: grey; }
+        .slide:nth-child(5){ background-color: mediumslateblue; }
+        .slide:nth-child(6){ background-color: palevioletred; }
+        button{padding: 20px;}
+    </style>
+</head>
+<body>
+    <div class="slider-wrapper">
+        <ul class="slide-main">
+            <li class="slide"></li>
+            <li class="slide"></li>
+            <li class="slide"></li>
+            <li class="slide"></li>
+            <li class="slide"></li>
+            <li class="slide"></li>
+        </ul>
+        <button id="leftArrow"><</button>
+        <button id="rightArrow">></button>
+    </div>
+
+    <script>
+        const slideWrapper = document.querySelector('.slide-main');
+        const slide = document.querySelector('.slide');
+        const leftBtn = document.getElementById('leftArrow');
+        const rightBtn = document.getElementById('rightArrow');
+        rightBtn.addEventListener('click', ()=>{
+            const slideWidth = slide.clientWidth
+            slideWrapper.scrollLeft += slideWidth
+        })
+
+        leftBtn.addEventListener('click', ()=>{
+            const slideWidt = slide.clientWidth
+            slideWrapper.scrollLeft -= slideWidt
+        })
+    </script>
+</body>
+</html>
