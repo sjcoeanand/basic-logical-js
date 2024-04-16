@@ -9,7 +9,7 @@ let rawArray = [{
     'division' : 'A',
     'percentage' : '99.3%'
 },{
-    'name' : 'manohar',
+    'name' : 'Anand',
     'std' : 9,
     'division' : 'A',
     'percentage' : '91%'
@@ -26,12 +26,19 @@ let rawArray = [{
 }]
 
 // find unique object on the basis of standard from array of object
-let b = new Map();
+// let b = new Map();
 
+// for(let obj of rawArray){
+//     b.set(obj.std, obj)
+// }
+// console.log('b = ', b);
+// let sample = b.values();
+// let output = [...sample]
+// console.log('output = ', output);
+
+
+let mappedObject  = new Map()
 for(let obj of rawArray){
-    b.set(obj.std, obj)
+    mappedObject.set(obj.name, obj)
 }
-console.log('b = ', b);
-let sample = b.values();
-let output = [...sample]
-console.log('output = ', output);
+console.log(mappedObject);

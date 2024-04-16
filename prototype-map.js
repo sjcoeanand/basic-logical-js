@@ -1,0 +1,1 @@
+let sampleArray = [3, 6, 8, 12, 9]

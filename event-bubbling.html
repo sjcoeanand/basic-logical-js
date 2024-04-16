@@ -17,8 +17,8 @@
         parent1
         <div class="child1" onclick="mypc1alert()">
             pchild1
-            <div class="subchild1" >
-                <a href="anandshendage.in" onclick="myc1alert(event)">child1 - using event.stopPropagation()</a> 
+            <div class="subchild1" onclick="myc1alert(event)">
+                <a href="anandshendage.in" >child1 - using event.stopPropagation()</a> 
             </div>
             <div class="subchild2" onclick="myc2alert()">
                 child2 - bubbling effect
@@ -56,7 +56,7 @@
       parent.addEventListener( "click", function () {
           console.log("clicked parent");
         },
-        true
+        false
       );
 
       child.addEventListener("click", function () {
