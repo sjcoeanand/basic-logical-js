@@ -13,21 +13,21 @@
 </head>
 <body>
     <h2>========================Event Bubbling===============</h2>
-    <div class="parent1" onclick="mypalert()">
+    <div class="parent1">
         parent1
-        <div class="child1" onclick="mypc1alert()">
+        <div class="child1">
             pchild1
-            <div class="subchild1" onclick="myc1alert(event)">
-                <a href="anandshendage.in" >child1 - using event.stopPropagation()</a> 
+            <div class="subchild1">
+                <a href="anandshendage.in" target="new" >child1 - using event.stopPropagation()</a> 
             </div>
-            <div class="subchild2" onclick="myc2alert()">
+            <div class="subchild2">
                 child2 - bubbling effect
             </div>
         </div>
     </div>
 
     <h2>=============================Event Deligation=========================</h2>
-    <div onclick="alert(event.type + '!')">
+    <div class="eventDeligation">
         <div>One</div>
         <div>Two</div>
         <div>Three</div>
@@ -40,29 +40,38 @@
       </div>
 
     <script>
-       function mypalert(){alert('parent1 called')}
-       function mypc1alert(){alert('phild1 called')}
-       function myc1alert(event){
-        console.log("e", event);
-        event.preventDefault()
+       const parent1 = document.querySelector('.parent1')
+       parent1.addEventListener('click', function mypalert(){alert('parent1 called')})     
+
+       const child1 = document.querySelector('.child1') 
+       child1.addEventListener('click', function mypc1alert(){alert('phild1 called')}) 
+
+       const subchild1 = document.querySelector('.subchild1') 
+       subchild1.addEventListener('click', function myc1alert(event){
+        // event.preventDefault()
         event.stopPropagation()
         alert('child1 called')
-       }
-       function myc2alert(){alert('child2 called')}
+       }) 
+
+       const subchild2 = document.querySelector('.subchild2') 
+       subchild2.addEventListener('click', function myc2alert(){alert('child2 called')}) 
+       
+       const eventDeligation = document.querySelector('.eventDeligation') 
+       eventDeligation.addEventListener('click', function(){alert(event.type + '!')}) 
 
        const parent = document.querySelector(".parentEventCapture");
-      const child = document.querySelector(".child");
+       const child = document.querySelector(".child");
 
-      parent.addEventListener( "click", function () {
+       parent.addEventListener( "click", function () {
           console.log("clicked parent");
         },
         false
-      );
+       );
 
-      child.addEventListener("click", function () {
-        event.stopPropagation();
-        console.log("clicked child");
-      });
+       child.addEventListener("click", function () {
+         event.stopPropagation();
+         console.log("clicked child");
+       });
     </script>
 </body>
 </html>

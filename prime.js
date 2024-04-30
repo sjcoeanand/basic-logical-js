@@ -15,4 +15,4 @@ const isPrime = (num) => {
     return true
 }
 
-isPrime(0)
+isPrime(4)
