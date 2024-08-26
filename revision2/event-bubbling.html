@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .parent1{ background-color: #00ffff; padding: 10px;}
+            .child1{ background-color: #b6c027; padding: 10px;}
+            .subchild1{ background-color: #ff7300; padding: 10px;}
+            .subchild2{ background-color: #082525; padding: 10px; color: #fff;}
+        </style>
+    </head>
+    <body>
+        <h2>========================Event Bubbling===============</h2>
+        <!-- when event triggers from child element to all its parentsMN  -->
+        <div class="parent1">
+            parent1
+            <div class="child1">
+                pchild1
+                <div class="subchild1">
+                    <a>child1 - using event.stopPropagation()</a> 
+                </div>
+                <div class="subchild2">
+                    child2 - bubbling effect
+                </div>
+            </div>
+        </div>
+
+        <h2>=============================Event Deligation=========================</h2>
+        <div class="eventDeligation">
+            <div>One</div>
+            <div>Two</div>
+            <div>Three</div>
+        </div>
+
+        
+        <h2>===================================Event Capturing==============================</h2>
+        <div class="outer" style="padding: 20px; background-color: orange;"> Outer
+            <div class="middle" style="padding: 20px; background-color: white;"> Middle
+              <div class="inner" style="padding: 20px; background-color: green;">Inner Btn</div>
+            </div>
+          </div>
+
+        <script>
+            let parent1 = document.querySelector('.parent1');
+            parent1.addEventListener('click', function (){ alert('parent clicked')});
+
+            let subchild2 = document.querySelector('.subchild2');
+            subchild2.addEventListener('click', function (event){ 
+                event.stopPropagation();
+                alert('subchild 2 clicked')
+            });
+
+            let eventDeligation = document.querySelector('.eventDeligation');
+            eventDeligation.addEventListener('click', function(){
+                alert('event deligated')
+            })
+
+            let parentEventCapture3 = document.querySelector('.outer');
+            parentEventCapture3.addEventListener('click', function(){
+                alert('event capture outer');
+            })
+
+            let child1EventCaptureBtn2 = document.querySelector('.middle');
+            child1EventCaptureBtn2.addEventListener('click', function(e){
+                e.stopPropagation();
+                alert('event capture middle');
+            })
+            
+            let subchild1EventCaptureBtn1 = document.querySelector('.inner');
+            subchild1EventCaptureBtn1.addEventListener('click', function(){
+                e.stopPropagation();
+                alert('event capture btn inner');
+            })
+
+        </script>
+    </body>
+</html>
