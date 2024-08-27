@@ -19,3 +19,23 @@ function findCharCount(str) {
 }
 
 console.log('unique char = ', findCharCount('anandshendage'));
+
+
+function charCount(str){
+    let countObj = {};
+    for(let val of str){
+        if(countObj.hasOwnProperty(val)){
+            countObj[val] = ++countObj[val]
+        } else {
+            countObj[val] = 1
+        }
+    }
+    console.log('countObj', countObj);
+    let uniqueChars = [];
+    for(let key of Object.keys(countObj)){
+        if(countObj[key] === 1)
+            uniqueChars.push(key)
+    }
+    return uniqueChars
+}
+console.log(charCount('hanumaan'));
