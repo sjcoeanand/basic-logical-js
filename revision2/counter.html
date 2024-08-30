@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Counter Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #counter {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="counter">13</div>
+    <button onclick="resetCounter()">Reset</button>
+
+    <script>
+        let count = 13;
+        let intervalId;
+
+        // Function to automatically decrement the counter
+        function startAutoCounter() {
+            intervalId = setInterval(function() {
+                if (count > 0) {
+                    count--;
+                    document.getElementById('counter').innerText = count;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 1000); // Reduce count every 1 second
+        }
+
+        // Function to reset the counter without data loss
+        function resetCounter() {
+            clearInterval(intervalId); // Stop the current interval
+            count = 13; // Reset count to 13
+            document.getElementById('counter').innerText = count;
+            startAutoCounter(); // Restart the auto counter
+        }
+
+        // Start the auto counter when the page loads
+        startAutoCounter();
+    </script>
+
+</body>
+</html>
